@@ -1,0 +1,68 @@
+.intro-section {
+  margin-top: 100vh;
+  padding-left: 300px;
+  padding-right: 300px;
+}
+
+.about-agency {
+  font-size: 14px;
+  color: var(--color-red);
+}
+
+.intro-heading {
+  font-size: 45px;
+  font-weight: 800;
+  color: var(--color-blue);
+}
+
+.intro-sub-heading {
+  color: transparent;
+  font-size: 45px;
+  font-weight: 800;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: var(--color-red);
+  stroke-width: 0px;
+  stroke: #000;
+}
+
+.intro-description {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 26px;
+}
+
+.intro-img {
+  object-fit: contain;
+  border-radius: 5px;
+}
+
+.btn {
+  background-color: var(--color-red);
+  color: white;
+
+  &:hover {
+    background-color: var(--color-blue);
+    color: white;
+  }
+}
+
+@media (max-width: 768px) {
+  .intro-section {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+
+  .about-agency {
+    font-size: 12px;
+  }
+
+  .intro-heading {
+    font-size: 35px;
+    font-weight: 600;
+  }
+
+  .intro-sub-heading {
+    font-size: 35px;
+    font-weight: 600;
+  }
+}

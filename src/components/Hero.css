@@ -1,0 +1,59 @@
+.bg-video {
+  object-fit: cover;
+  object-position: center;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.hero-content {
+  position: absolute;
+  top: 40%;
+  bottom: 50%;
+  width: 100%;
+  text-align: center;
+  color: white;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.title {
+  font-size: 14px;
+  letter-spacing: 3px;
+  font-weight: 400;
+  white-space: nowrap;
+}
+
+.heading {
+  font-size: 75px;
+  font-weight: 800;
+}
+
+.sub-heading {
+  font-size: 75px;
+  font-weight: 800;
+  color: transparent;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: white;
+  stroke-width: 0px;
+  stroke: #000;
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 10px;
+    letter-spacing: 2px;
+  }
+
+  .heading {
+    font-size: 32px;
+    font-weight: 600;
+  }
+
+  .sub-heading {
+    font-size: 32px;
+    font-weight: 600;
+  }
+}

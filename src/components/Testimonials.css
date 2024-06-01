@@ -1,0 +1,17 @@
+.testimonials {
+  padding: 100px 300px;
+
+  .user-img {
+    border-radius: 50%;
+  }
+
+  .user-name {
+    color: var(--color-blue);
+  }
+}
+
+@media (max-width: 768px) {
+  .testimonials {
+    padding: 10px 10px;
+  }
+}

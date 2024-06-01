@@ -1,0 +1,25 @@
+.switch-btn {
+  position: fixed;
+  left: 5%;
+  bottom: 2%;
+
+  .btn1 {
+    background-color: white;
+    color: var(--color-blue);
+  }
+
+  .btn1.active {
+    background-color: var(--color-blue);
+    color: white;
+  }
+
+  .btn2 {
+    background-color: white;
+    color: var(--color-blue);
+  }
+
+  .btn2.active {
+    background-color: var(--color-blue);
+    color: white;
+  }
+}
