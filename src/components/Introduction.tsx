@@ -1,5 +1,5 @@
 import { useTranslation } from "react-i18next";
-import IntroImg from "../assets/intro.jpg";
+import IntroImg from "../assets/intro.webp";
 import "./Introduction.css";
 
 const Introduction = () => {

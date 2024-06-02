@@ -1,10 +1,10 @@
-import HotelBg from "../assets/hotel-service.jpg";
-import CarBg from "../assets/car-rental-service.jpg";
-import FlightBg from "../assets/flight-reservation-service.jpg";
-import VisaBg from "../assets/visa-service.jpg";
-import PackageBg from "../assets/package-service.jpg";
-import TransferBg from "../assets/transfer-service.jpg";
-import ChauffeurBg from "../assets/chuaffeur-service.jpg";
+import HotelBg from "../assets/hotel-service.webp";
+import CarBg from "../assets/car-rental-service.webp";
+import FlightBg from "../assets/flight-reservation-service.webp";
+import VisaBg from "../assets/visa-service.webp";
+import PackageBg from "../assets/package-service.webp";
+import TransferBg from "../assets/transfer-service.webp";
+import ChauffeurBg from "../assets/chuaffeur-service.webp";
 import SpecialServiceBg from "../assets/special-service.mp4";
 import Card from "./Card";
 

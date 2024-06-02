@@ -1,10 +1,10 @@
 import Card from "./Card";
-import FranceTour from "../assets/france.jpg";
-import LondonTour from "../assets/london.jpg";
-import GermanyTour from "../assets/germany.jpg";
-import GreeceTour from "../assets/greece.jpg";
-import SwitzerLandTour from "../assets/swizerland.jpg";
-import MaldivesTour from "../assets/maldives.jpg";
+import FranceTour from "../assets/france.webp";
+import LondonTour from "../assets/london.webp";
+import GermanyTour from "../assets/germany.webp";
+import GreeceTour from "../assets/greece.webp";
+import SwitzerLandTour from "../assets/swizerland.webp";
+import MaldivesTour from "../assets/maldives.webp";
 import "./Tours.css";
 import { useTranslation } from "react-i18next";
 
