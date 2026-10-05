@@ -1,0 +1,87 @@
+.item {
+  flex: none;
+  display: flex;
+  width: clamp(17rem, 27vw, 24rem);
+  scroll-snap-align: start;
+}
+
+/* Travel-poster card: photo on top, a solid colour band carrying the name */
+.card {
+  --band-bg: var(--signal);
+  --band-fg: var(--white);
+
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  height: min(68vh, 36rem);
+  border-radius: 1.5rem;
+  overflow: hidden;
+  background: var(--band-bg);
+  color: var(--band-fg);
+}
+
+.card[data-tone="saffron"] {
+  --band-bg: var(--saffron);
+  --band-fg: var(--ink);
+}
+
+.card[data-tone="lagoon"] {
+  --band-bg: var(--lagoon);
+  --band-fg: var(--ink);
+}
+
+.card[data-tone="ink"] {
+  --band-bg: var(--ink);
+}
+
+.photo {
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.band {
+  display: grid;
+  gap: 0.5rem;
+  padding: 1.25rem 1.5rem 1.5rem;
+}
+
+.name {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(2.5rem, 4vw, 3.5rem);
+  line-height: 0.9;
+  letter-spacing: var(--tracking-display);
+  text-transform: uppercase;
+}
+
+.description {
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.cta {
+  justify-self: start;
+  margin-block-start: 0.25rem;
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-decoration: underline;
+  text-underline-offset: 0.3em;
+  text-decoration-thickness: 2px;
+}
+
+@media (max-width: 640px) {
+  .item {
+    width: min(80vw, 22rem);
+  }
+
+  .card {
+    height: 32rem;
+  }
+}

@@ -1,0 +1,120 @@
+.hero {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  min-height: 100svh;
+  padding-block: calc(var(--nav-height) + 3rem) clamp(3rem, 8vh, 6rem);
+  background: var(--ink);
+  color: var(--white);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.video {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.scrim {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(to top, rgb(27 36 112 / 0.85), rgb(27 36 112 / 0.15) 60%),
+    rgb(27 36 112 / 0.25);
+}
+
+.flight {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+}
+
+:global([dir="rtl"]) .flight {
+  scale: -1 1;
+}
+
+.copy {
+  position: relative;
+}
+
+.lead {
+  margin-block-end: 1rem;
+  font-size: clamp(1rem, 1.6vw, 1.25rem);
+  font-weight: 300;
+  color: rgb(255 255 255 / 0.85);
+}
+
+.title {
+  margin-block-end: clamp(2rem, 4vw, 3rem);
+}
+
+.titleLines {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.mask {
+  display: block;
+  overflow: hidden;
+  padding-block: 0.06em;
+}
+
+.explore,
+.tile {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: clamp(3.5rem, 12vw, 10rem);
+  line-height: 0.95;
+  letter-spacing: var(--tracking-display);
+  text-transform: uppercase;
+}
+
+/* Lalezar's deep descenders need taller lines inside the clipping masks */
+:global([dir="rtl"]) .explore,
+:global([dir="rtl"]) .tile {
+  line-height: 1.35;
+}
+
+.explore {
+  display: inline-block;
+}
+
+/* All names share one grid cell: the widest one sets the slot width */
+.tile {
+  display: inline-grid;
+  margin-block: 0.3rem 0.7rem;
+  padding: 0.06em 0.16em 0;
+  border-radius: 0.1em;
+  background: var(--saffron);
+  color: var(--ink);
+  overflow: hidden;
+}
+
+.tileGhost,
+.tileWord {
+  grid-area: 1 / 1;
+}
+
+.tileGhost {
+  visibility: hidden;
+}
+
+.with {
+  display: inline-block;
+  font-size: clamp(1.5rem, 3.4vw, 2.75rem);
+  font-weight: 500;
+}
+
+.ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}

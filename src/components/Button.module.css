@@ -1,0 +1,38 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6em;
+  min-height: 3.25rem;
+  padding: 0.85rem 1.6rem;
+  border-radius: 999px;
+  font-weight: 500;
+  font-size: 1rem;
+  line-height: 1.2;
+  white-space: nowrap;
+  box-shadow: 0 0 0 0 transparent;
+  transition: box-shadow 0.5s var(--ease-out);
+}
+
+.button svg {
+  flex: none;
+  font-size: 1.15em;
+}
+
+.solid {
+  background: var(--signal);
+  color: var(--white);
+}
+
+.solid:hover {
+  box-shadow: 0 10px 24px -10px var(--signal);
+}
+
+.light {
+  background: var(--white);
+  color: var(--ink);
+}
+
+.ink {
+  background: var(--ink);
+  color: var(--white);
+}

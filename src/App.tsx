@@ -1,29 +1,30 @@
-import Hero from "./components/Hero";
+import { MotionConfig } from "motion/react";
 import Navbar from "./components/Navbar";
-import ScrollToTop from "./components/ScrollToTop";
-
-import "bootstrap/dist/css/bootstrap.min.css";
-import Introduction from "./components/Introduction";
-import Tours from "./components/Tours";
-import Services from "./components/Services";
-import CustomerSupport from "./components/CustomerSupport";
-import Testimonials from "./components/Testimonials";
 import Footer from "./components/Footer";
-import SwitchButton from "./components/SwitchButton";
+import ScrollTopButton from "./components/ScrollTopButton";
+import Hero from "./sections/hero/Hero";
+import About from "./sections/about/About";
+import Tours from "./sections/tours/Tours";
+import Services from "./sections/services/Services";
+import Vip from "./sections/vip/Vip";
+import Testimonials from "./sections/testimonials/Testimonials";
+import Support from "./sections/support/Support";
 
 export default function App() {
   return (
-    <div>
-      <ScrollToTop />
-      <Hero />
+    <MotionConfig reducedMotion="user">
       <Navbar />
-      <Introduction />
-      <Tours />
-      <Services />
-      <CustomerSupport />
-      <Testimonials />
-      <SwitchButton />
+      <main>
+        <Hero />
+        <About />
+        <Tours />
+        <Services />
+        <Vip />
+        <Testimonials />
+        <Support />
+      </main>
       <Footer />
-    </div>
+      <ScrollTopButton />
+    </MotionConfig>
   );
 }

@@ -1,0 +1,83 @@
+.tours {
+  padding-block: var(--section-space);
+  background: var(--white);
+  overflow: clip; /* the sliding row is wider than the screen */
+}
+
+.header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1.5rem 2rem;
+  margin-block-end: clamp(1.5rem, 4vw, 2.5rem);
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.progress {
+  width: clamp(6rem, 14vw, 12rem);
+  height: 4px;
+  border-radius: 999px;
+  background: var(--sky);
+  overflow: hidden;
+}
+
+.progress span {
+  display: block;
+  height: 100%;
+  background: var(--signal);
+  transform-origin: left;
+}
+
+:global([dir="rtl"]) .progress span {
+  transform-origin: right;
+}
+
+.arrows {
+  display: none;
+  gap: 0.6rem;
+}
+
+.track {
+  --edge: max(var(--gutter), (100vw - 1240px) / 2);
+
+  display: flex;
+  gap: clamp(1rem, 2vw, 1.75rem);
+  width: max-content;
+  padding-inline: var(--edge);
+  padding-block: 0.75rem 1.25rem; /* room for the hover lift */
+}
+
+/* ponytail: !important beats Motion's inline transform. Phones (where the slide would
+   run ~3x scroll speed) and reduced motion get a native swipe row instead. */
+@media (max-width: 899px), (prefers-reduced-motion: reduce) {
+  .progress {
+    display: none;
+  }
+
+  .track {
+    width: auto;
+    transform: none !important;
+    overflow-x: auto;
+    overscroll-behavior-x: contain; /* no trackpad swipe-back at the ends */
+    scroll-snap-type: x proximity;
+    scroll-padding-inline: var(--edge);
+    scrollbar-width: none;
+  }
+
+  .track::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* Mouse users in swipe-row mode get arrows */
+@media (max-width: 899px) and (hover: hover), (prefers-reduced-motion: reduce) and (hover: hover) {
+  .arrows {
+    display: flex;
+  }
+}
