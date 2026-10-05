@@ -1,37 +1,108 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
-
 :root {
-  --color-red: #ef442a;
-  --color-blue: #293c92;
-  --brand-color: hsl(46, 100%, 50%);
-  --black: hsl(0, 0%, 0%);
-  --white: hsl(0, 0%, 100%);
-}
-body {
-  margin: 0;
-  padding: 0;
+  /* Palette: logo blue + logo red, desert sun, Gulf water, cool sky */
+  --ink: #1b2470;
+  --ink-soft: #4a5285;
+  --signal: #d4321b;
+  --saffron: #ffb627;
+  --lagoon: #17bebb;
+  --sky: #eef2ff;
+  --white: #ffffff;
+
+  --font-display: "Big Shoulders Display", "Readex Pro", sans-serif;
+  --font-body: "Readex Pro", system-ui, sans-serif;
+  --tracking-display: 0.01em;
+
+  --nav-height: 4.5rem;
+  --section-space: clamp(5rem, 11vw, 9rem);
+  --gutter: clamp(1rem, 4vw, 2.5rem);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --hairline: rgb(27 36 112 / 0.16);
 }
 
-* {
+:root[dir="rtl"] {
+  --font-display: "Lalezar", "Readex Pro", sans-serif;
+  --tracking-display: 0;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
 
 html {
   scroll-behavior: smooth;
 }
 
-body {
-  font-family: "Poppins", sans-serif;
-  scroll-behavior: smooth;
-  overflow-x: hidden;
+/* Not scroll-padding on <html>: native ScrollTimelines (used by Motion's useScroll)
+   treat it as an inset and shift every scroll-linked animation. */
+[id] {
+  scroll-margin-top: var(--nav-height);
 }
 
-::-webkit-scrollbar {
-  width: 0.6rem;
-  background-color: #14213d;
+body {
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  color: var(--ink);
+  background: var(--sky);
+  overflow-x: clip;
+  -webkit-font-smoothing: antialiased;
 }
-::-webkit-scrollbar-thumb {
-  background-color: #4539e6;
+
+img,
+video,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+
+ul {
+  list-style: none;
+}
+
+:focus-visible {
+  outline: 3px solid var(--saffron);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+::selection {
+  background: var(--saffron);
+  color: var(--ink);
+}
+
+.container {
+  width: min(1240px, 100% - var(--gutter) * 2);
+  margin-inline: auto;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 }

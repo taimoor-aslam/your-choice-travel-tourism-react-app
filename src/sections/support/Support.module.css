@@ -1,0 +1,33 @@
+.support {
+  padding-block: var(--section-space);
+  background: var(--saffron);
+  color: var(--ink);
+}
+
+.inner {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: end;
+}
+
+.copy {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.description {
+  max-width: 55ch;
+}
+
+.actions {
+  display: grid;
+  gap: 0.75rem;
+  justify-items: start;
+}
+
+@media (max-width: 860px) {
+  .inner {
+    grid-template-columns: 1fr;
+  }
+}

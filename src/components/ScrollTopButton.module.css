@@ -1,0 +1,32 @@
+.button {
+  position: fixed;
+  inset-block-end: 1.25rem;
+  inset-inline-end: 1.25rem;
+  z-index: 30;
+  display: grid;
+  place-items: center;
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+  background: var(--ink);
+  color: var(--white);
+  font-size: 1.25rem;
+  box-shadow: 0 10px 24px -12px rgb(27 36 112 / 0.7);
+}
+
+.ring {
+  position: absolute;
+  inset: 0;
+  rotate: -90deg;
+  fill: none;
+  stroke-width: 3;
+}
+
+.track {
+  stroke: rgb(255 255 255 / 0.18);
+}
+
+.progress {
+  stroke: var(--saffron);
+  stroke-linecap: round;
+}

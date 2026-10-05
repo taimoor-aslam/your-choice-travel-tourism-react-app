@@ -1,0 +1,21 @@
+.arrow {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 3.25rem;
+  height: 3.25rem;
+  border-radius: 50%;
+  border: 2px solid var(--ink);
+  color: var(--ink);
+  font-size: 1.25rem;
+  transition: background 0.4s var(--ease-out), color 0.4s var(--ease-out);
+}
+
+.arrow:hover {
+  background: var(--ink);
+  color: var(--white);
+}
+
+:global([dir="rtl"]) .arrow svg {
+  scale: -1 1;
+}

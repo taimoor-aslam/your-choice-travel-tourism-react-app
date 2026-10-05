@@ -1,0 +1,109 @@
+.testimonials {
+  padding-block: var(--section-space);
+  background: var(--lagoon);
+  color: var(--ink);
+  overflow: hidden;
+}
+
+.heading {
+  margin-block-end: clamp(2rem, 5vw, 3.5rem);
+}
+
+.stage {
+  display: grid;
+  min-height: 22rem;
+}
+
+.slide {
+  display: grid;
+  gap: 2rem;
+  align-content: start;
+  cursor: grab;
+  touch-action: pan-y;
+}
+
+.slide:active {
+  cursor: grabbing;
+}
+
+.quote {
+  max-width: 34em;
+  font-size: clamp(1.35rem, 2.6vw, 2.1rem);
+  font-weight: 300;
+  line-height: 1.4;
+  text-wrap: pretty;
+}
+
+.quote::before {
+  content: "“";
+  display: block;
+  height: 0.55em;
+  font-family: var(--font-display);
+  font-size: 3.5em;
+  line-height: 1;
+  color: var(--white);
+}
+
+:global([dir="rtl"]) .quote::before {
+  content: "”";
+}
+
+.person {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.person img {
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+  border: 3px solid var(--white);
+  object-fit: cover;
+}
+
+.person span {
+  display: grid;
+  font-size: 0.95rem;
+}
+
+.person strong {
+  font-weight: 600;
+  font-size: 1.05rem;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-block-start: 2.5rem;
+}
+
+.dots {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.dot {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 2.25rem;
+  height: 2.75rem;
+}
+
+.dot::before {
+  content: "";
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 50%;
+  background: rgb(27 36 112 / 0.35);
+}
+
+.dotActive {
+  position: absolute;
+  width: 1.4rem;
+  height: 0.55rem;
+  border-radius: 999px;
+  background: var(--ink);
+}

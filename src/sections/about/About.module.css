@@ -1,0 +1,68 @@
+.about {
+  padding-block: var(--section-space);
+  overflow: hidden;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: clamp(3rem, 7vw, 7rem);
+  align-items: center;
+}
+
+.copy {
+  display: grid;
+  gap: 2rem;
+  justify-items: start;
+}
+
+.text {
+  display: grid;
+  gap: 1rem;
+  max-width: 60ch;
+  color: var(--ink-soft);
+}
+
+.media {
+  position: relative;
+  display: grid;
+  place-items: center;
+  padding-block: 3rem;
+}
+
+/* Plane window: a tall stadium shape */
+.window {
+  position: relative;
+  width: min(100%, 26rem);
+  aspect-ratio: 3 / 4.4;
+  border-radius: 999px;
+  border: 0.75rem solid var(--white);
+  overflow: hidden;
+  box-shadow: 0 40px 60px -40px rgb(27 36 112 / 0.6);
+}
+
+.window img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.sun {
+  position: absolute;
+  inset-block-start: 8%;
+  inset-inline-end: -6%;
+  width: clamp(10rem, 22vw, 17rem);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--saffron);
+}
+
+@media (max-width: 860px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .window {
+    width: min(78%, 22rem);
+  }
+}

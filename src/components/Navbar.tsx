@@ -1,112 +1,104 @@
-import { useState } from "react";
-import Logo from "../assets/logo.png";
-import "./Navbar.css";
+import { useCallback, useState } from "react";
+import { motion, useMotionValueEvent, useScroll } from "motion/react";
 import { useTranslation } from "react-i18next";
+import { FiPhone } from "react-icons/fi";
+import logo from "../assets/logo.png";
+import { ease, glide } from "../lib/motion";
+import { NAV_IDS, PHONE } from "../lib/site";
+import useActiveSection from "../lib/useActiveSection";
+import Button from "./Button";
+import LanguageSwitch from "./LanguageSwitch";
+import MobileMenu from "./MobileMenu";
+import styles from "./Navbar.module.css";
 
-const Hamburger = () => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width="52"
-    height="24"
-    viewBox="0 0 52 24"
-  >
-    <g id="Group_9" data-name="Group 9" transform="translate(-294 -47)">
-      <rect
-        id="Rectangle_3"
-        data-name="Rectangle 3"
-        width="42"
-        height="4"
-        rx="2"
-        transform="translate(304 47)"
-        fill="#574c4c"
-      />
-      <rect
-        id="Rectangle_5"
-        data-name="Rectangle 5"
-        width="42"
-        height="4"
-        rx="2"
-        transform="translate(304 67)"
-        fill="#574c4c"
-      />
-      <rect
-        id="Rectangle_4"
-        data-name="Rectangle 4"
-        width="52"
-        height="4"
-        rx="2"
-        transform="translate(294 57)"
-        fill="#574c4c"
-      />
-    </g>
-  </svg>
-);
-
-const Navbar = () => {
-  const [showNavbar, setShowNavbar] = useState(false);
+export default function Navbar() {
   const { t } = useTranslation();
+  const active = useActiveSection(NAV_IDS);
+  const [open, setOpen] = useState(false);
+  const [hidden, setHidden] = useState(false);
+  const close = useCallback(() => setOpen(false), []);
 
-  const handleShowNavbar = () => {
-    setShowNavbar(!showNavbar);
-  };
+  // Tuck the bar away while scrolling down, bring it back on any upward scroll.
+  const { scrollY } = useScroll();
+  useMotionValueEvent(scrollY, "change", (y) => {
+    setHidden(y > (scrollY.getPrevious() ?? 0) && y > 400);
+  });
 
   return (
-    <nav className="navbar">
-      <div className="container">
-        <div className="logo d-flex align-items-center gap-1">
-          <img src={Logo} height={50} width={50} />
-          <h3 className="d-none d-md-block logo-text">
-            {t("yourChoiceTravels")}
-          </h3>
-        </div>
-        <div className="menu-icon" onClick={handleShowNavbar}>
-          <Hamburger />
-        </div>
-        <div className={`nav-elements  ${showNavbar && "active"}`}>
-          <ul>
-            <li>
-              <a href="#home" onClick={() => setShowNavbar(false)}>
-                {t("home")}
-              </a>
-            </li>
-            <li>
-              <a href="#about" onClick={() => setShowNavbar(false)}>
-                {t("about")}
-              </a>
-            </li>
-            <li>
-              <a href="#tours" onClick={() => setShowNavbar(false)}>
-                {t("tours")}
-              </a>
-            </li>
-            <li>
-              <a href="#services" onClick={() => setShowNavbar(false)}>
-                {t("services")}
-              </a>
-            </li>
-            <li>
-              <a href="#testimonials" onClick={() => setShowNavbar(false)}>
-                {t("testimonial")}
-              </a>
-            </li>
-            <li>
-              <a href="#footer" onClick={() => setShowNavbar(false)}>
-                {t("contact")}
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://privateemail.com/"
-                onClick={() => setShowNavbar(false)}
-              >
-                {t("emailLogin")}
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-  );
-};
+    <>
+      <motion.header
+        className={styles.header}
+        animate={{ y: hidden && !open ? "-150%" : 0 }}
+        transition={{ duration: 0.6, ease }}
+      >
+        <nav className={styles.nav} aria-label={t("nav.label")}>
+          <a href="#home" className={styles.brand}>
+            <img src={logo} alt="" width={40} height={35} />
+            <span>{t("brand")}</span>
+          </a>
 
-export default Navbar;
+          <ul className={styles.links}>
+            {NAV_IDS.map((id) => (
+              <li key={id}>
+                <a
+                  href={`#${id}`}
+                  className={styles.link}
+                  aria-current={active === id ? "location" : undefined}
+                >
+                  {active === id && (
+                    <motion.span
+                      layoutId="nav-pill"
+                      className={styles.pill}
+                      transition={glide}
+                    />
+                  )}
+                  <span className={styles.label}>{t(`nav.${id}`)}</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+
+          <div className={styles.actions}>
+            <LanguageSwitch />
+            <Button href={PHONE.href} className={styles.call}>
+              <FiPhone aria-hidden />
+              {t("nav.call")}
+            </Button>
+            <MenuToggle open={open} onToggle={() => setOpen((o) => !o)} />
+          </div>
+        </nav>
+      </motion.header>
+
+      <MobileMenu open={open} active={active} onClose={close} />
+    </>
+  );
+}
+
+function MenuToggle({ open, onToggle }: { open: boolean; onToggle: () => void }) {
+  const { t } = useTranslation();
+  const line = { duration: 0.3, ease };
+
+  return (
+    <button
+      type="button"
+      className={styles.toggle}
+      aria-expanded={open}
+      aria-controls="mobile-menu"
+      aria-label={t(open ? "nav.closeMenu" : "nav.openMenu")}
+      onClick={onToggle}
+    >
+      <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden>
+        <motion.line
+          x1="3" x2="21" y1="8" y2="8"
+          animate={open ? { rotate: 45, y: 4 } : { rotate: 0, y: 0 }}
+          transition={line}
+        />
+        <motion.line
+          x1="3" x2="21" y1="16" y2="16"
+          animate={open ? { rotate: -45, y: -4 } : { rotate: 0, y: 0 }}
+          transition={line}
+        />
+      </svg>
+    </button>
+  );
+}
